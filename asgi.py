@@ -3,16 +3,18 @@ sys.path.append('..')
 from fastapi import FastAPI
 from fastapi.staticfiles import StaticFiles
 from fastapi.templating import Jinja2Templates
-# from views.index_app.index import app1
-# from views.entity_explore_app.entity_explore import app2
+from index.views import app_index
+from introduction_of_the_diary.views import app_introduction
+from registration.views import app_registration
 
 
 
 app = FastAPI()
-# app.mount("/entity_explore", app2)
-# app.mount("/", app1)
-app.mount("/static", StaticFiles(directory="static"))
-templates = Jinja2Templates(directory="templates")
+app.mount("/introduction_of_the_diary/", app_introduction)
+app.mount("/registration/", app_registration)
+app.mount("/", app_index)
+
+
 
 
 
